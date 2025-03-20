@@ -75,6 +75,7 @@ broadcast/
 
 # Ignore virtual environments
 venv/
+.venv/
 
 # Custom
 bin
