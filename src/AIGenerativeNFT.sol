@@ -18,6 +18,8 @@ contract AIGenerativeNFT is ERC721, Ownable {
     uint64 public constant MIN_GAS_LIMIT = 100_000;
     uint64 public constant MAX_GAS_LIMIT = 10_000_000;
 
+    string public baseContractURI;
+
     struct MintState {
         address user;
         string baseIdea;
@@ -125,6 +127,16 @@ contract AIGenerativeNFT is ERC721, Ownable {
         }
     }
 
+    /// @notice Admin function to set collection-level metadata URI (OpenSea contractURI)
+    function setContractURI(string memory uri) external onlyOwner {
+        baseContractURI = uri;
+    }
+
+    /// @notice Returns OpenSea-style contract metadata URI
+    function contractURI() external view returns (string memory) {
+        return baseContractURI;
+    }
+
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         require(ownerOf(tokenId) != address(0), "Nonexistent token");
         string memory image = tokenIdToImage[tokenId];
@@ -139,7 +151,8 @@ contract AIGenerativeNFT is ERC721, Ownable {
                 prompt,
                 "\", \"image\": \"",
                 image,
-                "\"}"
+                "\", \"attributes\": [{\"trait_type\": \"Model\", \"value\": \"LLaMA + SD\"}]"
+                "}"
             )
         );
     }
