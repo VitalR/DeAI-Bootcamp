@@ -87,6 +87,17 @@ export default function Home() {
             </a>{' '}
             – enabling on-chain AI inference
           </p>
+          <p>
+            NFT Contract:{' '}
+            <a
+              href="https://sepolia.etherscan.io/address/0xed6ae8ceec65c9aab767e68de9dc9d59a85863ae"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-blue-400 hover:text-blue-300"
+            >
+              0xed6...63ae ↗
+            </a>
+          </p>
         </div>
 
         {!connectedAddress ? (
