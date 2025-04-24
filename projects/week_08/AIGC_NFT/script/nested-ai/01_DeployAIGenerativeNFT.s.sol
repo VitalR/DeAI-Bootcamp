@@ -35,4 +35,6 @@ contract DeployAIGenerativeNFT is Script {
     }
 }
 
-// source .env && forge script script/01_DeployAIGenerativeNFT.s.sol:DeployAIGenerativeNFT --rpc-url ${RPC_URL} --private-key ${PRIVATE_KEY} --broadcast --verify --etherscan-api-key ${SCAN_API_KEY} -vvvv
+// https://sepolia.etherscan.io/address/0x978af172ae31b79ebebfe0a6b0d7a294f0369f3b
+
+// source .env && forge script script/nested-ai/01_DeployAIGenerativeNFT.s.sol:DeployAIGenerativeNFT --rpc-url ${RPC_URL} --private-key ${PRIVATE_KEY} --broadcast --verify --etherscan-api-key ${SCAN_API_KEY} -vvvv
