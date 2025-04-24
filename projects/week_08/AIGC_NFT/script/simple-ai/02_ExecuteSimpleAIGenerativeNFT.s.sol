@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import { Script, console } from "forge-std/Script.sol";
-import { SimpleAIGenerativeNFT } from "../src/SimpleAIGenerativeNFT.sol";
+import { SimpleAIGenerativeNFT } from "../../src/SimpleAIGenerativeNFT.sol";
 
 contract ExecuteSimpleAIGenerativeNFT is Script {
     address constant COLLECTION = 0xED6aE8CEEC65C9AAb767E68De9Dc9D59A85863Ae; // deployed address on Sepolia
@@ -24,4 +24,5 @@ contract ExecuteSimpleAIGenerativeNFT is Script {
     }
 }
 
-// source .env && forge script script/simple-ai/02_ExecuteSimpleAIGenerativeNFT.s.sol:ExecuteSimpleAIGenerativeNFT --rpc-url ${RPC_URL} --private-key ${PRIVATE_KEY} --broadcast --verify --etherscan-api-key ${SCAN_API_KEY} -vvvv
+// source .env && forge script script/simple-ai/02_ExecuteSimpleAIGenerativeNFT.s.sol:ExecuteSimpleAIGenerativeNFT
+// --rpc-url ${RPC_URL} --private-key ${PRIVATE_KEY} --broadcast --verify --etherscan-api-key ${SCAN_API_KEY} -vvvv

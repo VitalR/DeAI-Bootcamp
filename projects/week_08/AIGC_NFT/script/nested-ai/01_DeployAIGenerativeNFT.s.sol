@@ -2,7 +2,7 @@
 pragma solidity ^0.8.25;
 
 import { Script, console } from "forge-std/Script.sol";
-import { AIGenerativeNFT } from "../src/AIGenerativeNFT.sol";
+import { AIGenerativeNFT } from "../../src/AIGenerativeNFT.sol";
 import { IAIOracle } from "OAO/contracts/interfaces/IAIOracle.sol";
 
 contract DeployAIGenerativeNFT is Script {
@@ -22,12 +22,7 @@ contract DeployAIGenerativeNFT is Script {
     function run() public {
         vm.startBroadcast(deployerPrivateKey);
 
-        nft = new AIGenerativeNFT(
-            deployerPublicKey,
-            OAO_PROXY,
-            MODEL_LLAMA,
-            MODEL_SD
-        );
+        nft = new AIGenerativeNFT(deployerPublicKey, OAO_PROXY, MODEL_LLAMA, MODEL_SD);
 
         console.log("== AIGenerativeNFT deployed at: %s", address(nft));
 
@@ -37,4 +32,5 @@ contract DeployAIGenerativeNFT is Script {
 
 // https://sepolia.etherscan.io/address/0x978af172ae31b79ebebfe0a6b0d7a294f0369f3b
 
-// source .env && forge script script/nested-ai/01_DeployAIGenerativeNFT.s.sol:DeployAIGenerativeNFT --rpc-url ${RPC_URL} --private-key ${PRIVATE_KEY} --broadcast --verify --etherscan-api-key ${SCAN_API_KEY} -vvvv
+// source .env && forge script script/nested-ai/01_DeployAIGenerativeNFT.s.sol:DeployAIGenerativeNFT --rpc-url
+// ${RPC_URL} --private-key ${PRIVATE_KEY} --broadcast --verify --etherscan-api-key ${SCAN_API_KEY} -vvvv

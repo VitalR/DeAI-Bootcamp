@@ -137,11 +137,11 @@ contract AIGenerativeNFT is ERC721, Ownable, AIOracleCallbackReceiver {
     /// @param _requestId The unique ID of the completed inference request
     /// @param _output The output of the AI model (either a refined prompt or image URL)
     /// @param _callbackData ABI-encoded user context: original prompt and address
-    function aiOracleCallback(
-        uint256 _requestId,
-        bytes calldata _output,
-        bytes calldata _callbackData
-    ) external override onlyAIOracleCallback {
+    function aiOracleCallback(uint256 _requestId, bytes calldata _output, bytes calldata _callbackData)
+        external
+        override
+        onlyAIOracleCallback
+    {
         (address user, string memory ideaOrPrompt) = abi.decode(_callbackData, (address, string));
         string memory result = string(_output);
 
@@ -156,11 +156,7 @@ contract AIGenerativeNFT is ERC721, Ownable, AIOracleCallbackReceiver {
             uint256 requiredFee = aiOracle.estimateFee(modelSD, gasLimit);
 
             uint256 nextRequestId = aiOracle.requestCallback{ value: requiredFee }(
-                modelSD,
-                inputSD,
-                address(this),
-                gasLimit,
-                nextCallbackData
+                modelSD, inputSD, address(this), gasLimit, nextCallbackData
             );
 
             emit PromptRequest(nextRequestId, user, modelSD, string(inputSD));
